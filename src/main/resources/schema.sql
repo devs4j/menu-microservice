@@ -1,0 +1,6 @@
+CREATE TABLE menu_item (
+    id INTEGER  PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR (50) NOT NULL,
+    description VARCHAR (255) NOT NULL,
+    price DOUBLE NOT NULL
+);
