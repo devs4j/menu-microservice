@@ -2,6 +2,7 @@ package mx.com.devs4j.microservices.menu;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuItemController {
 	
 	private MenuItemService menuItemService;
+	private String helloStr;
 	
-	public MenuItemController(MenuItemService menuItemService) {
+	public MenuItemController(MenuItemService menuItemService, @Value("${property}") String helloStr) {
 		this.menuItemService = menuItemService;
+		this.helloStr = helloStr;
+	}
+	
+	@GetMapping("/hello") 
+	public String hello() {
+		return helloStr;
 	}
 
 	@GetMapping("/items")
