@@ -27,15 +27,8 @@ public class MenuItemServiceTest {
 	
 	@Test
 	public void shouldGetAllMenuItems() {
-		MenuItem mi = new MenuItem();
-		mi.setName("Cafe Americano");
-		mi.setDescription("Descripcion");
-		mi.setPrice(Double.valueOf(20.0));
-		List<MenuItem> menuItems = new ArrayList<>();
-		menuItems.add(mi);
-		
 		Mockito.when(exchangeRateGateway.getExchangeRateInUsd()).thenReturn(Double.valueOf(0.05));
-		Mockito.when(menuItemRepository.findAll()).thenReturn(menuItems);
+		Mockito.when(menuItemRepository.findAll()).thenReturn(createMenuItems());
 		
 		List<MenuItem> allItems = menuItemService.getAll();
 		
@@ -45,6 +38,16 @@ public class MenuItemServiceTest {
 		Assert.assertEquals("Descripcion", menuItem.getDescription());
 		Assert.assertEquals(Double.valueOf(20.0), menuItem.getPrice());
 		Assert.assertEquals(Double.valueOf(1.0), menuItem.getPriceInUsd());
+	}
+	
+	public List<MenuItem> createMenuItems() {
+		MenuItem mi = new MenuItem();
+		mi.setName("Cafe Americano");
+		mi.setDescription("Descripcion");
+		mi.setPrice(Double.valueOf(20.0));
+		List<MenuItem> menuItems = new ArrayList<>();
+		menuItems.add(mi);
+		return menuItems;
 	}
 
 }
