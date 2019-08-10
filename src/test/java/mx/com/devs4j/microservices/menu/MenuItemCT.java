@@ -1,5 +1,7 @@
 package mx.com.devs4j.microservices.menu;
 
+import java.io.IOException;
+
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,16 +40,16 @@ public class MenuItemCT {
 	private RestTemplate restTemplate;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws IOException {
 		mockServer = MockRestServiceServer.createServer(restTemplate);
+		
+		mockServer.expect(MockRestRequestMatchers.requestTo("http://mymockapi/latest?base=MXN&symbols=USD"))
+			.andRespond(MockRestResponseCreators.withSuccess(
+				TestUtils.readFileAsString("exchangeRate.json"), MediaType.APPLICATION_JSON));
 	}
 
 	@Test
 	public void shouldGetAllItems() throws Exception {
-		mockServer.expect(MockRestRequestMatchers.requestTo("http://mymockapi/latest?base=MXN&symbols=USD"))
-				.andRespond(MockRestResponseCreators.withSuccess(
-						TestUtils.readFileAsString("exchangeRate.json"), MediaType.APPLICATION_JSON));
-
 		mockMvc.perform(MockMvcRequestBuilders.get("/items"))
 			.andExpect(MockMvcResultMatchers.status().isOk());
 	}
