@@ -1,0 +1,68 @@
+{
+  "provider": {
+    "name": "menuItem"
+  },
+  "consumer": {
+    "name": "order"
+  },
+  "interactions": [
+    {
+      "description": "when one menu item is requested",
+      "request": {
+        "method": "GET",
+        "path": "/items/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "name": "Cafe Americano",
+          "description": "Descripcion",
+          "price": 20.0,
+          "priceInUsd": 1.0
+        }
+      },
+      "providerStates": [
+        {
+          "name": "get one menu item1"
+        }
+      ]
+    },
+    {
+      "description": "when one menu item is requested1",
+      "request": {
+        "method": "GET",
+        "path": "/items/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 2,
+          "name": "Cafe Americano",
+          "description": "Descripcion",
+          "price": 20.0,
+          "priceInUsd": 1.0
+        }
+      },
+      "providerStates": [
+        {
+          "name": "get one menu item2"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.6.12"
+    }
+  }
+}
