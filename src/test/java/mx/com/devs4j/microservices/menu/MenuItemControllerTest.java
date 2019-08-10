@@ -36,15 +36,19 @@ public class MenuItemControllerTest {
 	}
 
 	public List<MenuItem> createMenuItems() {
+		List<MenuItem> menuItems = new ArrayList<>();
+		menuItems.add(createMenuItem());
+		return menuItems;
+	}
+
+	private MenuItem createMenuItem() {
 		MenuItem mi = new MenuItem();
 		mi.setId(1);
 		mi.setName("Cafe Americano");
 		mi.setDescription("Descripcion");
 		mi.setPrice(Double.valueOf(20.0));
 		mi.setPriceInUsd(Double.valueOf(1.0));
-		List<MenuItem> menuItems = new ArrayList<>();
-		menuItems.add(mi);
-		return menuItems;
+		return mi;
 	}
 
 }
