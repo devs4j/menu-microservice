@@ -7,7 +7,7 @@
   },
   "interactions": [
     {
-      "description": "when one menu item is requested",
+      "description": "when one menu item is requested1",
       "request": {
         "method": "GET",
         "path": "/items/1"
@@ -32,10 +32,10 @@
       ]
     },
     {
-      "description": "when one menu item is requested1",
+      "description": "when one menu item is requested2",
       "request": {
         "method": "GET",
-        "path": "/items/1"
+        "path": "/items/2"
       },
       "response": {
         "status": 200,
