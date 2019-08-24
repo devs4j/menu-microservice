@@ -14,15 +14,25 @@ public class MenuItem {
 	private String name;
 	private String description;
 	private Double price;
+	private Integer inventory;
 	private transient Double priceInUsd;
 	
 	public MenuItem() {}
 	
-	public MenuItem(String name, String description, Double price) {
+	public MenuItem(String name, String description, Double price, Integer inventory) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.inventory = inventory;
+	}
+	
+	public Integer getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Integer inventory) {
+		this.inventory = inventory;
 	}
 
 	public Double getPriceInUsd() {

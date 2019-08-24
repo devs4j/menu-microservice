@@ -16,9 +16,9 @@ class LoadDatabase {
 
 	@Bean
 	CommandLineRunner initDatabase(MenuItemRepository repository) {
-		MenuItem menuItem1 = new MenuItem("Espresso", "Delicioso cafe espresso", 10.45);
-		MenuItem menuItem2 = new MenuItem("Americano", "Café orgánico de chiapas", 13.00);
-		MenuItem menuItem3 = new MenuItem("Capuccino", "Delicioso cafe con una capa de espuma", 18.90);
+		MenuItem menuItem1 = new MenuItem("Espresso", "Delicioso cafe espresso", 10.45, 1);
+		MenuItem menuItem2 = new MenuItem("Americano", "Café orgánico de chiapas", 13.00, 1);
+		MenuItem menuItem3 = new MenuItem("Capuccino", "Delicioso cafe con una capa de espuma", 18.90, 1);
 		return args -> {
 			log.info("Preloading " + repository.save(menuItem1));
 			log.info("Preloading " + repository.save(menuItem2));
