@@ -2,6 +2,7 @@ package mx.com.devs4j.microservices.menu;
 
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class MenuItemController {
 
 	@GetMapping("/items")
 	public List<MenuItem> getAllMenuItems() {
+		LoggerFactory.getLogger(this.getClass()).info("Get all menu items request received");
 		return menuItemService.getAll();
 	}
 	
@@ -39,6 +41,7 @@ public class MenuItemController {
 
 	@GetMapping("/items/{id}")
 	public MenuItem one(@PathVariable Integer id) {
+		LoggerFactory.getLogger(this.getClass()).info("Find one menu item request received");
 		return menuItemService.findById(id).orElseThrow(() -> new RuntimeException("Id not found" + id));
 	}
 
